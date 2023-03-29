@@ -1,0 +1,203 @@
+{% extends 'base_admin.html' %}
+
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+        
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4" script="align-items-center">
+                <div class="row g-4">
+                    <h3 class="text-primary" >EEE ENERGY DETAILS</h3>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Voltage</p>
+                                <h6 class="mb-0">{{volt}} V</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Current</p>
+                                <h6 class="mb-0">{{crnt}} A</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Energy usage this month</p>
+                                <h6 class="mb-0">{{enr}} kWh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Power Demand</p>
+                                <h6 class="mb-0">{{volt}} Wh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Maximum demand Today</p>
+                                <h6 class="mb-0">{{hi}} Wh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Maximum demand in this week</p>
+                                <h6 class="mb-0">{{enr}} Wh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Renewable Energy capacity</p>
+                                <h6 class="mb-0">50 KW</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Solar irradiation</p>
+                                <h6 class="mb-0">50 </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+               <!-- Chart Start -->
+               <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4"> Energy usage chart this month in kWh</h6>
+                            <canvas id="line-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4"> Power demand Chart Today in kw</h6>
+                            <canvas id="line-chart1"></canvas>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">classroom G1</h6>
+                            <div class="m-n2">
+                                <form method="POST" class="needs-validation" action="/device-control/" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <input type="text" value="1" name="deviceid" hidden>
+                                <p>Current State: {{state1}}</p>
+                                <button type="submit" class="btn btn-success rounded-pill m-2" name="control" value="on">ON</button>
+                                <button type="submit" class="btn btn-danger rounded-pill m-2" name="control" value="off">OFF</button>
+                            </form>
+                            </div>
+                            <br> 
+                            <h6 class="mb-4">classroom G2</h6>
+                            <div class="m-n2">
+                                <form method="POST" class="needs-validation" action="/device-control/" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <input type="text" value="1" name="deviceid" hidden>
+                                <p>Current State: {{state1}}</p>
+                                <button type="submit" class="btn btn-success rounded-pill m-2" name="control" value="on">ON</button>
+                                <button type="submit" class="btn btn-danger rounded-pill m-2" name="control" value="off">OFF</button>
+                            </form>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">classroom F1</h6>
+                            <div class="m-n2">
+                                <form method="POST" class="needs-validation" action="/device-control/" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <input type="text" value="1" name="deviceid" hidden>
+                                <p>Current State: {{state1}}</p>
+                                <button type="submit" class="btn btn-success rounded-pill m-2" name="control" value="on">ON</button>
+                                <button type="submit" class="btn btn-danger rounded-pill m-2" name="control" value="off">OFF</button>
+                            </form>
+                            </div>
+                            <br> 
+                            <h6 class="mb-4" style="align-self: center;">classroom F2</h6>
+                            <div class="m-n2" style="align-self: center;">
+                                <form method="POST" class="needs-validation" action="/device-control/" enctype="multipart/form-data" novalidate>
+                                {% csrf_token %}
+                                <input type="text" value="1" name="deviceid" hidden>
+                                <p>Current State: {{state1}}</p>
+                                <button type="submit" class="btn btn-success rounded-pill m-2" name="control" value="on">ON</button>
+                                <button type="submit" class="btn btn-danger rounded-pill m-2" name="control" value="off">OFF</button>
+                            </form>
+                            </div>
+    
+                        </div>
+                    </div>
+
+                </div>
+            </div>       
+
+            <!-- Chart End -->
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+    
+    // Single Line Chart
+    var ctx3 = $("#line-chart").get(0).getContext("2d");
+    var myChart3 = new Chart(ctx3, {
+        type: "line",
+        data: {
+            labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+            datasets: [{
+                label: "Energy",
+                fill: false,
+                backgroundColor: "rgba(0, 156, 255, .3)",
+                data:  [50,55,50,55,60,50,20,55,50,51,50,55,20,20,50,50,60,60,55,55,60]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+    var ctx4 = $("#line-chart1").get(0).getContext("2d");
+    var myChart4 = new Chart(ctx4, {
+        type: "line",
+        data: {
+            labels: {{labels}},
+            datasets: [{
+                label: "Energy",
+                fill: false,
+                backgroundColor: "rgba(0, 156, 255, .3)",
+                data:  []
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+</script>
+{% endblock js %}

@@ -1,0 +1,53 @@
+{% extends 'base_admin.html' %}
+
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+        
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <h3 class="text-primary align-items-center">Welcome to Mepco energy management system </h3>
+                    <h3 class="text-primary"></h3>
+                    <h3 class="text-primary">Hi {{name}}</h3>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+               <!-- Chart Start -->
+               <div class="container-fluid">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Power usage Chart</h6>
+                            <canvas id="line-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Chart End -->
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+    
+    // Single Line Chart
+    var ctx3 = $("#line-chart").get(0).getContext("2d");
+    var myChart3 = new Chart(ctx3, {
+        type: "line",
+        data: {
+            labels: {{labels}},
+            datasets: [{
+                label: "Energy",
+                fill: false,
+                backgroundColor: "rgba(0, 156, 255, .3)",
+                data:  {{data}}
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+</script>
+{% endblock js %}

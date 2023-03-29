@@ -1,0 +1,123 @@
+{% extends 'base_admin.html' %}
+
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+        
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>COLLEGE ENERGY DETAILS</h3>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Incomer Voltage</p>
+                                <h6 class="mb-0">{{volt}} V</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Incomer Current</p>
+                                <h6 class="mb-0">{{crnt}} A</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Energy usage this month</p>
+                                <h6 class="mb-0">{{enr}} kWh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Power Demand</p>
+                                <h6 class="mb-0">{{volt}} Wh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Maximum demand Today</p>
+                                <h6 class="mb-0">{{hi}} Wh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Maximum demand in this week</p>
+                                <h6 class="mb-0">{{enr}} Wh</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Renewable Energy capacity</p>
+                                <h6 class="mb-0">50 KW</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Solar irradiation</p>
+                                <h6 class="mb-0">50 </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+               <!-- Chart Start -->
+               <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Power usage Chart</h6>
+                            <canvas id="line-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Chart End -->
+</div>
+{% endblock content %}
+{% block js %}
+<script>
+    
+    // Single Line Chart
+    var ctx3 = $("#line-chart").get(0).getContext("2d");
+    var myChart3 = new Chart(ctx3, {
+        type: "line",
+        data: {
+            labels: {{labels}},
+            datasets: [{
+                label: "Energy",
+                fill: false,
+                backgroundColor: "rgba(0, 156, 255, .3)",
+                data:  {{data}}
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+</script>
+{% endblock js %}
