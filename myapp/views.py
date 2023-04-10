@@ -107,8 +107,6 @@ def eee(request):
         d2=Devices.objects.get(dev=2)
         d2s=d2.status
         em=EnergyMeter.objects.last()
-
-
         sno = 0
         data['name']="Super Admin"
         data['state1']=d1s
@@ -121,14 +119,13 @@ def eee(request):
         if(l>10):
             l=10
         lbl=[12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12]
-        datas=[10,20,30,40,50]
+        datas= []
         for i in range(l):
-            datas.append(latest[i].energy)
+            datas.append(latest[i].volt*latest[i].current)
 
         data['labels']=[12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12]
         #data['labels1']=["sun","mon","tue","wed","thu","sat"]
-        data['data']=datas
-        data['hi']="hello"
+        data['en']=datas
         return render(request, 'eee.html', data)
     return render(request, '404.html', {'name': name})
 def ece(request):
@@ -142,8 +139,6 @@ def ece(request):
         d2=Devices.objects.get(dev=2)
         d2s=d2.status
         em=EnergyMeter.objects.last()
-
-
         sno = 0
         data['name']="Super Admin"
         data['state1']=d1s
@@ -156,13 +151,13 @@ def ece(request):
         if(l>10):
             l=10
         lbl=[12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12]
-        datas=[10,20,30,40,50]
+        datas= []
         for i in range(l):
-            datas.append(latest[i].energy)
+            datas.append(latest[i].volt*latest[i].current)
 
-        data['labels']=lbl
-        data['data']=datas
-        data['hi']="hello"
+        data['labels']=[12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12]
+        #data['labels1']=["sun","mon","tue","wed","thu","sat"]
+        data['en']=datas
         return render(request, 'ece.html', data)
     return render(request, '404.html', {'name': name})
 def cse(request):
@@ -176,8 +171,6 @@ def cse(request):
         d2=Devices.objects.get(dev=2)
         d2s=d2.status
         em=EnergyMeter.objects.last()
-
-
         sno = 0
         data['name']="Super Admin"
         data['state1']=d1s
@@ -190,13 +183,13 @@ def cse(request):
         if(l>10):
             l=10
         lbl=[12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12]
-        datas=[10,20,30,40,50]
+        datas= []
         for i in range(l):
-            datas.append(latest[i].energy)
+            datas.append(latest[i].volt*latest[i].current)
 
-        data['labels']=lbl
-        data['data']=datas
-        data['hi']="hello"
+        data['labels']=[12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12]
+        #data['labels1']=["sun","mon","tue","wed","thu","sat"]
+        data['en']=datas
         return render(request, 'cse.html', data)
     return render(request, '404.html', {'name': name})
 
@@ -229,7 +222,7 @@ def clg(request):
 
         data['labels']=[12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12]
         data['labels1']=["sun","mon","tue","wed","thu","sat"]
-        data['data']=datas
+        data['enr']=datas
         data['hi']="hello"
         return render(request, 'college.html', data)
     return render(request, '404.html', {'name': name})

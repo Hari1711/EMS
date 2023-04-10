@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-CSRF_TRUSTED_ORIGINS=["https://hari1711-cuddly-umbrella-q6pp54j9jv5h4499-8000.preview.app.github.dev"]
+CSRF_TRUSTED_ORIGINS=["https://hari1711-cuddly-umbrella-q6pp54j9jv5h4499-8000.preview.app.github.dev","https://hari1711-cuddly-umbrella-q6pp54j9jv5h4499-2021.preview.app.github.dev"]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/

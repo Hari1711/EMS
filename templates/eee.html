@@ -49,7 +49,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Maximum demand Today</p>
-                                <h6 class="mb-0">{{hi}} Wh</h6>
+                                <h6 class="mb-0">60 W</h6>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Maximum demand in this week</p>
-                                <h6 class="mb-0">{{enr}} Wh</h6>
+                                <h6 class="mb-0">60 W</h6>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             <i class="fa fa-chart-area fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">Solar irradiation</p>
-                                <h6 class="mb-0">50 </h6>
+                                <h6 class="mb-0">50 W/sq.mt </h6>
                             </div>
                         </div>
                     </div>
@@ -188,10 +188,10 @@
         data: {
             labels: {{labels}},
             datasets: [{
-                label: "Energy",
+                label: "Power",
                 fill: false,
                 backgroundColor: "rgba(0, 156, 255, .3)",
-                data:  []
+                data:  {{en}}
             }]
         },
         options: {
